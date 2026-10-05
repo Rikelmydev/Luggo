@@ -2,7 +2,7 @@
 
 Site de pitch e MVP da Luggo, startup de aluguel de malas em São Paulo. Projeto de TCC em Empreendedorismo (Enzo, Bianca e Rikelmy).
 
-**[Ver o site no ar](https://rikelmydev.github.io/Luggo/)**
+**[Ver o site no ar](https://luggo-project.vercel.app/)**
 
 ![Tela inicial da Luggo: a mala laranja com a etiqueta da marca sobre o fundo azul](docs/preview.jpg)
 
