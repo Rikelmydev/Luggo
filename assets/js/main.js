@@ -328,7 +328,7 @@
     barcode.textContent = '';
     var seed = 0;
     for (var i = 0; i < code.length; i++) seed = (seed * 31 + code.charCodeAt(i)) >>> 0;
-    for (var b = 0; b < 26; b++) {
+    for (var b = 0; b < 20; b++) {
       seed = (seed * 1103515245 + 12345) >>> 0;
       var bar = document.createElement('i');
       if (seed % 3 === 0) bar.className = 'w';
