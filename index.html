@@ -31,7 +31,7 @@
       <a href="#plano">O plano</a>
       <a href="#equipe">Equipe</a>
     </nav>
-    <a class="btn btn--yellow btn--sm nav__cta" href="#patrocinar">Quero patrocinar</a>
+    <a class="btn btn--yellow btn--sm nav__cta" href="#patrocinar">Apoie a Luggo</a>
     <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle>
       <svg aria-hidden="true"><use href="#i-list"/></svg>
       <span class="sr-only">Abrir menu</span>
@@ -45,7 +45,7 @@
     <a href="#simulador">Simulador</a>
     <a href="#plano">O plano</a>
     <a href="#equipe">Equipe</a>
-    <a class="btn btn--yellow" href="#patrocinar">Quero patrocinar</a>
+    <a class="btn btn--yellow" href="#patrocinar">Apoie a Luggo</a>
   </nav>
 </div>
 
@@ -137,34 +137,7 @@
     </ul>
   </section>
 
-  <!-- 3. Para quem -->
-  <section class="slide who" id="para-quem" data-slide="Para quem">
-    <img class="who__photo" src="assets/img/viajantes-montanha.webp" alt="" width="1800" height="1200" loading="lazy" decoding="async">
-    <div class="container who__inner">
-      <h2 class="display h2">Para quem a Luggo existe</h2>
-      <div class="who__list" data-who>
-        <div class="who__item">
-          <button class="who__pill" type="button" aria-expanded="false" aria-controls="who-1">Viaja pouco</button>
-          <p class="who__detail" id="who-1" hidden>Faz uma ou duas viagens por ano e não quer gastar com uma mala que vai ficar parada.</p>
-        </div>
-        <div class="who__item">
-          <button class="who__pill" type="button" aria-expanded="false" aria-controls="who-2">Tem pouco espaço</button>
-          <p class="who__detail" id="who-2" hidden>Mora em estúdio, apartamento pequeno ou dividido nas grandes cidades, onde não sobra lugar para mala grande.</p>
-        </div>
-        <div class="who__item">
-          <button class="who__pill" type="button" aria-expanded="false" aria-controls="who-3">Precisa de flexibilidade</button>
-          <p class="who__detail" id="who-3" hidden>Cada viagem pede um tamanho. Quem muda de casa com frequência também evita acumular objetos volumosos.</p>
-        </div>
-        <div class="who__item">
-          <button class="who__pill" type="button" aria-expanded="false" aria-controls="who-4">Vai fazer uma mudança</button>
-          <p class="who__detail" id="who-4" hidden>Precisa de malas por poucos dias para levar as coisas de um endereço para outro.</p>
-        </div>
-      </div>
-    </div>
-    <div class="side-bar" aria-hidden="true"></div>
-  </section>
-
-  <!-- 4. Antes e depois -->
+  <!-- 3. Antes e depois -->
   <section class="slide shift" id="o-que-muda" data-slide="O que muda">
     <div class="container">
       <h2 class="display h2">O que muda para o cliente</h2>
@@ -193,7 +166,7 @@
     <div class="side-bar" aria-hidden="true"></div>
   </section>
 
-  <!-- 5. Como funciona -->
+  <!-- 4. Como funciona -->
   <section class="slide how" id="como-funciona" data-slide="Como funciona" data-how>
     <div class="container how__inner">
       <h2 class="display h2">Do site até a sua porta. E de volta.</h2>
@@ -241,14 +214,35 @@
         </ol>
       </div>
 
-      <div class="how__detail" data-how-detail aria-hidden="true">
-        <span class="how__detail-num" data-how-num>1</span>
-        <div>
-          <p class="how__detail-title" data-how-title>Escolha a mala</p>
-          <p class="how__detail-text" data-how-text>Pelo site ou app: de bordo, média ou grande, conforme a viagem.</p>
+      <ol class="how__list" data-how-list aria-hidden="true"></ol>
+    </div>
+  </section>
+
+  <!-- 5. Para quem -->
+  <section class="slide who" id="para-quem" data-slide="Para quem">
+    <img class="who__photo" src="assets/img/viajantes-montanha.webp" alt="" width="1800" height="1200" loading="lazy" decoding="async">
+    <div class="container who__inner">
+      <h2 class="display h2">Para quem a Luggo existe</h2>
+      <div class="who__list" data-who>
+        <div class="who__item">
+          <button class="who__pill" type="button" aria-expanded="true" aria-controls="who-1">Viaja pouco</button>
+          <p class="who__detail" id="who-1">Faz uma ou duas viagens por ano e não quer gastar com uma mala que vai ficar parada.</p>
+        </div>
+        <div class="who__item">
+          <button class="who__pill" type="button" aria-expanded="true" aria-controls="who-2">Tem pouco espaço</button>
+          <p class="who__detail" id="who-2">Mora em estúdio, apartamento pequeno ou dividido nas grandes cidades, onde não sobra lugar para mala grande.</p>
+        </div>
+        <div class="who__item">
+          <button class="who__pill" type="button" aria-expanded="true" aria-controls="who-3">Precisa de flexibilidade</button>
+          <p class="who__detail" id="who-3">Cada viagem pede um tamanho. Quem muda de casa com frequência também evita acumular objetos volumosos.</p>
+        </div>
+        <div class="who__item">
+          <button class="who__pill" type="button" aria-expanded="true" aria-controls="who-4">Vai fazer uma mudança</button>
+          <p class="who__detail" id="who-4">Precisa de malas por poucos dias para levar as coisas de um endereço para outro.</p>
         </div>
       </div>
     </div>
+    <div class="side-bar" aria-hidden="true"></div>
   </section>
 
   <!-- 6. Simulador -->
@@ -399,15 +393,6 @@
       </figure>
       </div>
     </div>
-
-    <div class="container rivals">
-      <h3 class="h3">Quem já está no mercado</h3>
-      <dl class="rivals__list">
-        <div><dt>Rent a Bag</dt><dd>Concorrente direto. Já aluga malas para moradores da capital paulista.</dd></div>
-        <div><dt>RV Locker</dt><dd>Guarda malas em São Paulo, mas não aluga a mala para a viagem.</dd></div>
-        <div class="rivals__us"><dt>Luggo</dt><dd>Aluguel com reserva digital, entrega ou retirada e, no futuro, totens. Foco em malas de qualidade, kits de tamanhos diferentes e em quem não quer comprar nem guardar uma mala.</dd></div>
-      </dl>
-    </div>
   </section>
 
   <!-- 8. O plano -->
@@ -491,12 +476,12 @@
           <p class="bcg__y">Crescimento do mercado</p>
           <span class="bcg__tick bcg__tick--xa">Alta</span><span class="bcg__tick bcg__tick--xb">Baixa</span>
           <span class="bcg__tick bcg__tick--ya">Alto</span><span class="bcg__tick bcg__tick--yb">Baixo</span>
-          <section class="bcg__c bcg__star"><svg aria-hidden="true"><use href="#i-star"/></svg><h3>Estrela</h3><p class="bcg__offer">Aluguel de malas</p><p>Produto central e principal fonte de receita. Investir em aquisição de clientes e ampliar o estoque conforme a demanda.</p></section>
-          <section class="bcg__c bcg__q"><svg aria-hidden="true"><use href="#i-question"/></svg><h3>Ponto de interrogação</h3><p class="bcg__offer">Totens de autoatendimento</p><p>Expansão ainda não validada, que exige hardware, software e ponto. Primeiro validar loja e entrega.</p></section>
-          <section class="bcg__c bcg__cow"><svg aria-hidden="true"><use href="#i-cow"/></svg><h3>Vaca leiteira</h3><p class="bcg__offer">Entrega e retirada</p><p>Serviço complementar que gera receita com o frete. Usar a logística como diferencial, com custo eficiente.</p></section>
-          <section class="bcg__c bcg__dog"><h3>Abacaxi</h3><p class="bcg__offer">Nenhuma oferta</p><p>Nenhuma oferta planejada fica neste quadrante.</p></section>
+          <section class="bcg__c bcg__star"><svg aria-hidden="true"><use href="#i-star"/></svg><h3>Estrela</h3><p class="bcg__offer">Rent a Bag</p><p>Concorrente direto. Já aluga malas para moradores da capital paulista.</p><p class="bcg__why">Já tem clientes num mercado que está crescendo.</p></section>
+          <section class="bcg__c bcg__q bcg__us"><svg aria-hidden="true"><use href="#i-question"/></svg><h3>Ponto de interrogação</h3><p class="bcg__offer">Luggo</p><p>Aluguel com reserva digital, entrega ou retirada e, no futuro, totens. Foco em malas de qualidade, kits de tamanhos diferentes e em quem não quer comprar nem guardar uma mala.</p><p class="bcg__why">Entra num mercado que cresce, ainda sem participação. Precisa de investimento para virar Estrela.</p></section>
+          <section class="bcg__c bcg__cow"><svg aria-hidden="true"><use href="#i-cow"/></svg><h3>Vaca leiteira</h3><p class="bcg__offer">RV Locker</p><p>Guarda malas em São Paulo, mas não aluga a mala para a viagem.</p><p class="bcg__why">Já está estabelecida no guarda-volumes, um serviço mais estável, que cresce pouco.</p></section>
+          <section class="bcg__c bcg__dog"><h3>Abacaxi</h3><p class="bcg__offer">Nenhum concorrente analisado</p><p class="bcg__why">Pouca participação num mercado parado. Um Ponto de interrogação que não ganha clientes acaba aqui.</p></section>
         </div>
-        <p class="plan__foot">Matriz projetada: a Luggo ainda não tem participação de mercado real. A classificação é uma hipótese para o estágio inicial, a validar depois da entrada no mercado.</p>
+        <p class="plan__foot">Como ler: o eixo vertical mostra quanto cresce o mercado de cada empresa; o horizontal, o tamanho dela em relação ao maior concorrente. As posições são estimativas da equipe, porque ainda não há dados públicos de participação de mercado.</p>
       </div>
 
       <!-- 5W2H -->
@@ -520,32 +505,14 @@
       <h2 class="display h2">Uma mala, muitos aluguéis</h2>
       <p class="lede">Cada mala sai e volta várias vezes no ano. Ela paga o próprio custo nos primeiros aluguéis e, a partir daí, vira margem.</p>
 
-      <div class="money__grid">
-        <ul class="streams" aria-label="Fontes de receita">
-          <li class="streams__main"><svg aria-hidden="true"><use href="#i-suitcase-rolling"/></svg><strong>Aluguel por diária ou período</strong><span>A principal fonte de receita.</span></li>
-          <li><svg aria-hidden="true"><use href="#i-truck"/></svg><strong>Taxa de entrega e retirada</strong><span>Quem prefere receber em casa paga o frete.</span></li>
-          <li><svg aria-hidden="true"><use href="#i-clock"/></svg><strong>Dias adicionais</strong><span>A volta atrasou? Os dias extras são cobrados.</span></li>
-          <li><svg aria-hidden="true"><use href="#i-shield-check"/></svg><strong>Taxa por dano ou perda</strong><span>Prevista em contrato, protege o estoque.</span></li>
-          <li><svg aria-hidden="true"><use href="#i-buildings"/></svg><strong>Hotéis e turismo</strong><span>Parcerias para ter mala onde o viajante já está.</span></li>
-          <li class="streams__next"><svg aria-hidden="true"><use href="#i-airplane-tilt"/></svg><strong>Agências de viagem <em>em estudo</em></strong><span>Oferecer malas a empresas de viagem com alto índice de mala quebrada.</span></li>
-        </ul>
-
-        <div class="payback" data-payback>
-          <h3 class="payback__title">A conta de uma mala</h3>
-          <div class="field-range field-range--light">
-            <div class="field-range__head"><label for="pb-cost">Custo da mala no atacado</label><output for="pb-cost" data-out="pb-cost">R$ 200</output></div>
-            <input type="range" id="pb-cost" min="100" max="600" step="10" value="200">
-          </div>
-          <div class="field-range field-range--light">
-            <div class="field-range__head"><label for="pb-rent">Valor médio de um aluguel</label><output for="pb-rent" data-out="pb-rent">R$ 90</output></div>
-            <input type="range" id="pb-rent" min="30" max="200" step="5" value="90">
-          </div>
-          <div class="payback__tokens" data-pb-tokens aria-hidden="true"></div>
-          <p class="payback__legend" aria-hidden="true"><span><i class="cost"></i>Pagando a mala</span><span><i class="margin"></i>Margem</span></p>
-          <p class="payback__result" aria-live="polite"><span data-pb-result>A mala se paga no 3º aluguel.</span></p>
-          <p class="payback__note">Conta simplificada, com valores de exemplo. Não inclui frete, higienização e outros custos da operação.</p>
-        </div>
-      </div>
+      <ul class="streams" aria-label="Fontes de receita">
+        <li class="streams__main"><svg aria-hidden="true"><use href="#i-suitcase-rolling"/></svg><strong>Aluguel por diária ou período</strong><span>A principal fonte de receita.</span></li>
+        <li><svg aria-hidden="true"><use href="#i-truck"/></svg><strong>Taxa de entrega e retirada</strong><span>Quem prefere receber em casa paga o frete.</span></li>
+        <li><svg aria-hidden="true"><use href="#i-clock"/></svg><strong>Dias adicionais</strong><span>A volta atrasou? Os dias extras são cobrados.</span></li>
+        <li><svg aria-hidden="true"><use href="#i-shield-check"/></svg><strong>Taxa por dano ou perda</strong><span>Prevista em contrato, protege o estoque.</span></li>
+        <li><svg aria-hidden="true"><use href="#i-buildings"/></svg><strong>Hotéis e turismo</strong><span>Parcerias para ter mala onde o viajante já está.</span></li>
+        <li class="streams__next"><svg aria-hidden="true"><use href="#i-airplane-tilt"/></svg><strong>Agências de viagem <em>em estudo</em></strong><span>Oferecer malas a empresas de viagem com alto índice de mala quebrada.</span></li>
+      </ul>
     </div>
   </section>
 
@@ -560,10 +527,10 @@
         </svg>
         <ol class="metro__stations">
           <li class="metro__st is-done"><span class="metro__dot"></span><h3>Pesquisa e validação</h3><p>Entender quem aluga, quando e por quanto.</p></li>
-          <li class="metro__st is-now"><span class="metro__dot"></span><span class="metro__here">Estamos aqui</span><h3>MVP</h3><p>Loja, site e app com estoque pequeno, para validar se as pessoas querem alugar malas.</p></li>
+          <li class="metro__st is-now"><span class="metro__dot"></span><span class="metro__here">Estamos aqui</span><h3>Primeira versão</h3><p>Loja e site com estoque pequeno, para validar se as pessoas querem alugar malas.</p></li>
           <li class="metro__st"><span class="metro__dot"></span><h3>Operação piloto</h3><p>Primeiros clientes e a rotina de entrega, coleta e higienização.</p></li>
-          <li class="metro__st"><span class="metro__dot"></span><h3>Expansão</h3><p>Outras regiões de São Paulo e parcerias com hotéis, hostels e turismo.</p></li>
           <li class="metro__st"><span class="metro__dot"></span><h3>Totens</h3><p>Autoatendimento em aeroportos, rodoviárias, shoppings e estações como Barra Funda e Tietê.</p></li>
+          <li class="metro__st"><span class="metro__dot"></span><h3>Expansão</h3><p>Outras regiões de São Paulo e parcerias com hotéis, hostels e turismo.</p></li>
         </ol>
       </div>
 
@@ -689,7 +656,7 @@
       <a href="#como-funciona">Como funciona</a>
       <a href="#simulador">Simulador</a>
       <a href="#plano">O plano</a>
-      <a href="#patrocinar">Quero patrocinar</a>
+      <a href="#patrocinar">Apoie a Luggo</a>
     </nav>
     <div class="footer__meta">
       <p>Projeto de TCC em Empreendedorismo, 2026.<br>Enzo, Bianca e Rikelmy.</p>

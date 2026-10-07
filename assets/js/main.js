@@ -198,25 +198,19 @@
     updateIdle(false);
   }
 
-  /* ---------- 3. Para quem ---------- */
-  var whoBtns = $$('.who__pill');
-  whoBtns.forEach(function (btn) {
+  /* ---------- 5. Para quem ---------- */
+  // Todos começam abertos; cada item abre e fecha sem mexer nos outros.
+  $$('.who__pill').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var open = btn.getAttribute('aria-expanded') === 'true';
-      whoBtns.forEach(function (b) {
-        b.setAttribute('aria-expanded', 'false');
-        $('#' + b.getAttribute('aria-controls')).hidden = true;
-      });
-      if (!open) {
-        btn.setAttribute('aria-expanded', 'true');
-        var panel = $('#' + btn.getAttribute('aria-controls'));
-        panel.hidden = false;
-        if (motionOK()) gsap.fromTo(panel, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
-      }
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      var panel = $('#' + btn.getAttribute('aria-controls'));
+      btn.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+      if (open && motionOK()) gsap.fromTo(panel, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
     });
   });
 
-  /* ---------- 4. Antes e depois ---------- */
+  /* ---------- 3. Antes e depois ---------- */
   if (motionOK()) {
     var afters = $$('.shift__after'), arrows = $$('.shift__arrow');
     gsap.set(afters, { opacity: 0, x: -28 });
@@ -231,37 +225,40 @@
     });
   }
 
-  /* ---------- 5. Como funciona: rota fixada no scroll ---------- */
+  /* ---------- 4. Como funciona: rota fixada no scroll ---------- */
   var howSection = $('[data-how]');
   var route = $('[data-route]');
   var progressPath = $('[data-route-progress]');
   var rider = $('[data-route-rider]');
   var steps = $$('.route__step');
-  var howNum = $('[data-how-num]'), howTitle = $('[data-how-title]'), howText = $('[data-how-text]');
+  var howList = $('[data-how-list]');
   var howST = null;
   var activeStep = -1;
   var pathLen = progressPath.getTotalLength();
 
-  function setStep(i, animate) {
+  // Todas as etapas ficam escritas abaixo da rota; o texto vem de cada passo da rota.
+  var howItems = steps.map(function (li) {
+    var item = document.createElement('li');
+    item.className = 'how__item';
+    var title = $('.route__label', li).cloneNode(true);
+    title.className = 'how__item-title';
+    var text = document.createElement('p');
+    text.className = 'how__item-text';
+    text.textContent = $('.route__text', li).textContent;
+    item.append(title, text);
+    howList.appendChild(item);
+    return item;
+  });
+
+  function setStep(i) {
     if (i === activeStep) return;
     activeStep = i;
     steps.forEach(function (s, k) {
       s.classList.toggle('is-active', k === i);
       s.classList.toggle('is-done', k < i);
+      howItems[k].classList.toggle('is-active', k === i);
+      howItems[k].classList.toggle('is-done', k < i);
     });
-    var li = steps[i];
-    var label = $('.route__label', li).textContent.replace(/^\d+\s*/, '');
-    var fill = function () {
-      howNum.textContent = i + 1;
-      howTitle.textContent = label;
-      howText.textContent = $('.route__text', li).textContent;
-    };
-    if (animate && motionOK()) {
-      gsap.to('[data-how-detail] > *', {
-        opacity: 0, y: -8, duration: 0.15, ease: 'power1.in', overwrite: true,
-        onComplete: function () { fill(); gsap.fromTo('[data-how-detail] > *', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out', stagger: 0.04 }); }
-      });
-    } else fill();
   }
 
   function renderRoute(p) {
@@ -269,7 +266,7 @@
     var pt = progressPath.getPointAtLength(pathLen * p);
     var w = route.clientWidth, h = route.clientHeight;
     rider.style.transform = 'translate(' + (pt.x / 1200 * w) + 'px,' + (pt.y / 330 * h) + 'px) translate(-50%, -92%)';
-    setStep(Math.min(steps.length - 1, Math.round(p * (steps.length - 1))), true);
+    setStep(Math.min(steps.length - 1, Math.round(p * (steps.length - 1))));
   }
 
   steps.forEach(function (li, i) {
@@ -277,7 +274,7 @@
       if (howST) {
         var y = howST.start + (howST.end - howST.start) * (i / (steps.length - 1));
         window.scrollTo({ top: y, behavior: reduceMQ.matches ? 'auto' : 'smooth' });
-      } else setStep(i, true);
+      } else setStep(i);
     });
   });
 
@@ -301,10 +298,10 @@
     mm.add('(min-width: 900px) and (prefers-reduced-motion: reduce)', function () {
       var pt = progressPath.getPointAtLength(pathLen);
       rider.style.transform = 'translate(' + (pt.x / 1200 * route.clientWidth) + 'px,' + (pt.y / 330 * route.clientHeight) + 'px) translate(-50%, -92%)';
-      setStep(0, false);
+      setStep(0);
     });
   } else {
-    setStep(0, false);
+    setStep(0);
   }
 
   /* ---------- 6. Simulador ---------- */
@@ -510,27 +507,6 @@
   vpdBtns.forEach(function (b) { b.addEventListener('click', function () { showPair(b.dataset.pair); }); });
   $$('.vpd__region').forEach(function (g) { g.addEventListener('click', function () { showPair(g.dataset.region); }); });
   showPair('pains');
-
-  /* ---------- 9. A conta de uma mala ---------- */
-  var pbCost = $('#pb-cost'), pbRent = $('#pb-rent');
-  var pbTokens = $('[data-pb-tokens]');
-  var pbResult = $('[data-pb-result]');
-  for (var tk = 0; tk < 12; tk++) pbTokens.appendChild(document.createElement('i'));
-  function updatePayback() {
-    var cost = +pbCost.value, rent = +pbRent.value;
-    $('[data-out="pb-cost"]').textContent = brl.format(cost).replace(',00', '');
-    $('[data-out="pb-rent"]').textContent = brl.format(rent).replace(',00', '');
-    var n = Math.ceil(cost / rent);
-    $$('i', pbTokens).forEach(function (tok, i) {
-      tok.className = i < n ? 'cost' : 'margin';
-    });
-    pbResult.textContent = n <= 1
-      ? 'A mala se paga já no 1º aluguel. Do 2º em diante, é margem.'
-      : 'A mala se paga no ' + n + 'º aluguel. Do ' + (n + 1) + 'º em diante, é margem.';
-  }
-  pbCost.addEventListener('input', updatePayback);
-  pbRent.addEventListener('input', updatePayback);
-  updatePayback();
 
   /* ---------- 10. Linha do metrô ---------- */
   if (motionOK()) {
